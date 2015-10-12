@@ -26,6 +26,10 @@
       <p>You will see me!</p>
     </script>
 
+    <script type="text/template" id="different-static-template">
+      <p>Text from a different template...</p>
+    </script>
+
     <script src="./assets/js/lib/jquery.min.js"></script>
     <script src="./assets/js/lib/json2.js"></script>
     <script src="./assets/js/lib/underscore-min.js"></script>
@@ -36,13 +40,24 @@
     var TaskApp = new Marionette.Application();
 
     TaskApp.StaticView = Marionette.ItemView.extend({
-      el: "#main-region",
       template: "#static-template"
     });
 
-    TaskApp.on("start", function(){
+    TaskApp.on("before:start", function(){
+      var RegionContainer = Marionette.LayoutView.extend({
+        el: "#app-container",
+
+        regions: {
+          main: "#main-region"
+        }
+      });
+
+      TaskApp.regions = new RegionContainer();
+    });
+
+    TaskApp.on("start", function() {
       var staticView = new TaskApp.StaticView();
-      staticView.render();
+      TaskApp.regions.main.show(staticView);
     });
 
     TaskApp.start();
