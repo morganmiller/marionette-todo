@@ -4,8 +4,10 @@ TaskApp.module("TasksModule.List", function(List, TaskApp, Backbone, Marionette,
     template: "#task-list-item"
   });
 
-  List.Tasks = Marionette.CollectionView.extend({
-    tagName: "ul",
-    childView: List.Task
+  List.Tasks = Marionette.CompositeView.extend({
+    className: "tasks-list",
+    template: "#task-list",
+    childView: List.Task,
+    childViewContainer: "ul"
   });
 });
