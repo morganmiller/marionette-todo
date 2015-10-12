@@ -34,10 +34,23 @@
   <script type="text/javascript">
     var TaskApp = new Marionette.Application();
 
-    TaskApp.Task = Backbone.Model.extend({});
+    TaskApp.Task = Backbone.Model.extend({
+      defaults: {
+        title: " ",
+        status: "incomplete"
+      }
+    });
 
     TaskApp.TaskView = Marionette.ItemView.extend({
-      template: "#task-template"
+      template: "#task-template",
+
+      events: {
+        "click p": "logStatus"
+      },
+
+      logStatus: function(){
+        console.log(this.model.escape("status"));
+      }
     });
 
     TaskApp.on("before:start", function(){
