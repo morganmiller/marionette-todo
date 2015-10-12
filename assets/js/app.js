@@ -11,3 +11,7 @@ TaskApp.on("before:start", function(){
 
   TaskApp.regions = new RegionContainer();
 });
+
+TaskApp.on("start", function() {
+  TaskApp.TasksModule.List.Controller.listTasks();
+});
