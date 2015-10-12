@@ -32,23 +32,13 @@
     <script src="./assets/js/lib/backbone.marionette.min.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/entities/task.js"></script>
+    <script src="./assets/js/apps/tasks/list/list_view.js"></script>
 
   <script type="text/javascript">
-
-    TaskApp.TaskItemView = Marionette.ItemView.extend({
-      tagName: "li",
-      template: "#task-list-item"
-    });
-
-    TaskApp.TasksView = Marionette.CollectionView.extend({
-      tagName: "ul",
-      childView: TaskApp.TaskItemView
-    });
-
     TaskApp.on("start", function() {
       var tasks = TaskApp.request("task:entities");
 
-      var tasksListView = new TaskApp.TasksView({
+      var tasksListView = new TaskApp.TasksModule.List.Tasks({
         collection: tasks
       });
 
