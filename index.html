@@ -30,20 +30,10 @@
     <script src="./assets/js/lib/underscore-min.js"></script>
     <script src="./assets/js/lib/backbone-min.js"></script>
     <script src="./assets/js/lib/backbone.marionette.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/entities/task.js"></script>
 
   <script type="text/javascript">
-    var TaskApp = new Marionette.Application();
-
-    TaskApp.Task = Backbone.Model.extend({
-      defaults: {
-        title: " ",
-        status: "incomplete"
-      }
-    });
-
-    TaskApp.TaskCollection = Backbone.Collection.extend({
-      model: TaskApp.Task
-    });
 
     TaskApp.TaskItemView = Marionette.ItemView.extend({
       tagName: "li",
@@ -55,20 +45,8 @@
       childView: TaskApp.TaskItemView
     });
 
-    TaskApp.on("before:start", function(){
-      var RegionContainer = Marionette.LayoutView.extend({
-        el: "#app-container",
-
-        regions: {
-          main: "#main-region"
-        }
-      });
-
-      TaskApp.regions = new RegionContainer();
-    });
-
     TaskApp.on("start", function() {
-      var tasks = new TaskApp.TaskCollection([
+      var tasks = new TaskApp.Entities.TaskCollection([
         {title: "Learn Marionette!"},
         {title: "Make a task app"},
         {title: "Remember to eat"}
