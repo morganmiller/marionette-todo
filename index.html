@@ -21,8 +21,8 @@
         <p>You won't see me :(</p>
       </div>
 
-    <script type="text/template" id="task-template">
-      <p><%- title %></p>
+    <script type="text/template" id="task-list-item">
+      <%- title %>
     </script>
 
     <script src="./assets/js/lib/jquery.min.js"></script>
@@ -41,16 +41,18 @@
       }
     });
 
-    TaskApp.TaskView = Marionette.ItemView.extend({
-      template: "#task-template",
+    TaskApp.TaskCollection = Backbone.Collection.extend({
+      model: TaskApp.Task
+    });
 
-      events: {
-        "click p": "logStatus"
-      },
+    TaskApp.TaskItemView = Marionette.ItemView.extend({
+      tagName: "li",
+      template: "#task-list-item"
+    });
 
-      logStatus: function(){
-        console.log(this.model.escape("status"));
-      }
+    TaskApp.TasksView = Marionette.CollectionView.extend({
+      tagName: "ul",
+      childView: TaskApp.TaskItemView
     });
 
     TaskApp.on("before:start", function(){
@@ -66,15 +68,17 @@
     });
 
     TaskApp.on("start", function() {
-      var todo = new TaskApp.Task({
-        title: "Learn Marionette!"
+      var tasks = new TaskApp.TaskCollection([
+        {title: "Learn Marionette!"},
+        {title: "Make a task app"},
+        {title: "Remember to eat"}
+      ]);
+
+      var tasksListView = new TaskApp.TasksView({
+        collection: tasks
       });
 
-      var todoView = new TaskApp.TaskView({
-        model: todo
-      });
-
-      TaskApp.regions.main.show(todoView)
+      TaskApp.regions.main.show(tasksListView)
     });
 
     TaskApp.start();
