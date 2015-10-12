@@ -46,11 +46,7 @@
     });
 
     TaskApp.on("start", function() {
-      var tasks = new TaskApp.Entities.TaskCollection([
-        {title: "Learn Marionette!"},
-        {title: "Make a task app"},
-        {title: "Remember to eat"}
-      ]);
+      var tasks = TaskApp.request("task:entities");
 
       var tasksListView = new TaskApp.TasksView({
         collection: tasks
