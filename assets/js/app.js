@@ -5,7 +5,8 @@ TaskApp.on("before:start", function(){
     el: "#app-container",
 
     regions: {
-      main: "#main-region"
+      main: "#main-region",
+      form: "#form-region"
     }
   });
 
@@ -13,5 +14,6 @@ TaskApp.on("before:start", function(){
 });
 
 TaskApp.on("start", function() {
+  TaskApp.TasksModule.Form.Controller.showForm();
   TaskApp.TasksModule.List.Controller.listTasks();
 });

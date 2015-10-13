@@ -17,12 +17,19 @@
     </div>
 
     <div id="app-container">
+      <div id="form-region" class="container">
+        You won't see meeeee!
+      </div>
       <div id="main-region" class="container">
-        <p>You won't see me :(</p>
+        You won't see me either :(
       </div>
 
     <script type="text/template" id="task-list-item">
       <%- title %> <button class="btn btn-small toggle-completed">Complete</button>
+    </script>
+
+    <script type="text/template" id="form-field">
+      <input id="new-task" placeholder="Set a new goal" autofocus>
     </script>
 
     <script type="text/template" id="task-list">
@@ -37,6 +44,8 @@
     <script src="./assets/js/lib/backbone.marionette.min.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/entities/task.js"></script>
+    <script src="./assets/js/apps/tasks/form/form_view.js"></script>
+      <script src="./assets/js/apps/tasks/form/form_controller.js"></script>
     <script src="./assets/js/apps/tasks/list/list_view.js"></script>
     <script src="./assets/js/apps/tasks/list/list_controller.js"></script>
 
