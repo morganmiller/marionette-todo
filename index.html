@@ -11,21 +11,22 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <span class="brand">Task App</span>
+          <span class="brand">A Super Rad Task App</span>
         </div>
       </div>
     </div>
 
     <div id="app-container">
       <div id="form-region" class="container">
-        You won't see meeeee!
+        You shouldn't see this!
       </div>
       <div id="main-region" class="container">
-        You won't see me either :(
+        You shouldn't see me either!
       </div>
+    </div>
 
     <script type="text/template" id="task-list-item">
-      <%- title %> <button class="btn btn-small toggle-completed">Complete</button>
+      <button class="btn btn-small toggle-completed">Complete</button> <%- title %>
     </script>
 
     <script type="text/template" id="form-field">
@@ -45,13 +46,12 @@
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/entities/task.js"></script>
     <script src="./assets/js/apps/tasks/form/form_view.js"></script>
-      <script src="./assets/js/apps/tasks/form/form_controller.js"></script>
+    <script src="./assets/js/apps/tasks/form/form_controller.js"></script>
     <script src="./assets/js/apps/tasks/list/list_view.js"></script>
     <script src="./assets/js/apps/tasks/list/list_controller.js"></script>
 
-  <script type="text/javascript">
-    TaskApp.start();
-  </script>
-  </div>
+    <script type="text/javascript">
+      TaskApp.start();
+    </script>
   </body>
 </html>
