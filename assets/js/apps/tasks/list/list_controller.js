@@ -7,6 +7,10 @@ TaskApp.module("TasksModule.List", function(List, TaskApp, Backbone, Marionette,
         collection: tasks
       });
 
+      tasksListView.on("childview:task:delete", function(childView, model){
+        tasks.remove(model)
+      });
+
       TaskApp.regions.main.show(tasksListView);
     }
   }
