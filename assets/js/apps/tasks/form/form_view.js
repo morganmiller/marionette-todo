@@ -22,6 +22,7 @@ TaskApp.module("TasksModule.Form", function(Form, TaskApp, Backbone, Marionette,
     createNewTask: function(newTaskTitle){
       if(newTaskTitle.trim() === ""){return;}
       TaskApp.TasksModule.List.Controller.listTasks(newTaskTitle);
+      this.ui.input.val("")
     }
   })
 });
