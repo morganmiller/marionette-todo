@@ -1,8 +1,7 @@
 TaskApp.module("Entities", function(Entities, TaskApp, Backbone, Marionette, $, _){
   Entities.Task = Backbone.Model.extend({
     defaults: {
-      title: " ",
-      status: "incomplete"
+      title: " "
     }
   });
 
@@ -12,11 +11,12 @@ TaskApp.module("Entities", function(Entities, TaskApp, Backbone, Marionette, $, 
 
   var tasks;
 
+  //Seed tasks
   var initializeTasks = function(){
     tasks = new Entities.TaskCollection([
-      {id: 1, title: "Learn Marionette!"},
-      {id: 2, title: "Make a task app"},
-      {id: 3, title: "Remember to eat"}
+      {title: "Learn Marionette!"},
+      {title: "Make a task app"},
+      {title: "Remember to eat"}
     ]);
   };
 
