@@ -16,6 +16,8 @@ TaskApp.module("TasksModule.List", function(List, TaskApp, Backbone, Marionette,
     remove: function(){
       var task = this;
       this.$el.slideUp(function(){
+        //instead of just removing the task, remove it and then add it to a
+        //new sub-module, like a completedList or something.
         Marionette.ItemView.prototype.remove.call(task)
       });
     }
